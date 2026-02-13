@@ -3,11 +3,10 @@ import starlight from "@astrojs/starlight";
 
 export default defineConfig({
   site: "https://qtet.070219.xyz",
-  integrations: [starlight({ title: "Site with sitemap" })],
   integrations: [
     starlight({
       title: "QtEasyTier",
-      favicon: "/images/logo.png",
+      favicon: "/favicon.ico",
       logo: {
         src: "./src/assets/logo.png",
       },
