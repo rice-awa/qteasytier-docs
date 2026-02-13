@@ -1,40 +1,84 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
+title: QtEasyTier
+head:
+  - tag: title
+    content: QtEasyTier | 轻松联机组网
+  - tag: meta
+    attrs:
+      name: description
+      content: QtEasyTier 是一个基于 EasyTier 的 P2P 联机组网软件，简单易用，功能强大，为用户带来愉快的联机组网体验体验。"
+  - tag: meta
+    attrs:
+      property: og:description
+      content: "QtEasyTier 是一个基于 EasyTier 的 P2P 联机组网软件，简单易用，功能强大，为用户带来愉快的联机组网体验体验。"
+description: 一款美观实用的远程联机工具.
 template: splash # Remove or comment out this line to display the site sidebar on this page.
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: 基于 EasyTier, 一款美观实用的远程联机工具!
   image:
-    file: ../../assets/houston.webp
+    file: ../../assets/qtet.png
   actions:
-    - text: Example Guide
-      link: /guides/example/
+    - text: 快速开始
+      link: /docs-home
       icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
+    - text: 前往软件仓库
+      link: https://gitee.com/viagrahuang/qt-easy-tier
+      icon: seti:git
       variant: minimal
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## Next steps
+## 🌟 主要功能
+
+<CardGrid>
+    <Card title="💻 远程组网" className="custom-card platform-card">
+        <p>
+            组件虚拟局域网，管理多台设备；支持子网代理等高级功能。NAS，远程桌面轻松连接。
+        </p>
+    </Card>
+
+    <Card title="🎮 游戏联机" className="custom-card game-card">
+        <p>
+            使用一键联机功能，与好友快速联机，支持MC，CS:GO2，森林之子等多款游戏。
+        </p>
+    </Card>
+</CardGrid>	
+
+## 🎯为什么选择QtEasyTier
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+	<Card title="使用简单，快速上手" icon="pencil">
+		UI 布局合理，功能提示齐全，帮助您快速上手类 EasyTier 的去中心化组网工具。
 	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
+	<Card title="高性能，低占用" icon="rocket">
+		前端使用Qt Framework (C++) 编写，界面简洁高效。
+		搭配EasyTier后端，为您带来高性能的组网体验！
 	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
+	<Card title="一键联机，好友互联零门槛" icon="seti:todo">
+		QtEasyTier1.1.0 版本新增一键联机功能，无需动手配置，自动生成房间号，与好友轻松联机。
 	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
+	<Card title="功能丰富，你的网络由你定义" icon="setting">
+		支持 EasyTier 后端的大部分功能，如子网代理，魔法DNS等，超多配置自由选择。
 	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
+	<Card title="开源免费，使用放心" icon="seti:git">
+		QtEasyTier 项目完全开源免费，不收集任何个人信息，使用安全放心。
 	</Card>
 </CardGrid>
+
+### 相关链接
+
+- [EasyTier：一个简单、安全、去中心化的异地组网方案](https://easytier.cn)
+- [明月清风的博客：作者的个人博客](https://blog.070219.xyz)
+
+#### 联系方式
+
+- 项目地址：
+  - Gitee:	[https://gitee.com/viagrahuang/qt-easy-tier](https://gitee.com/viagrahuang/qt-easy-tier)
+  - GitHub:	[https://github.com/myqfeng/qt-easy-tier](https://github.com/myqfeng/qt-easy-tier)
+
+  > 提交Pr请前往Gitee，GitHub仅为同步仓库
+
+- 作者邮箱：viagrahuang@outlook.com
+
+- 作者常混迹于EasyTier支持3群：**957189589**
