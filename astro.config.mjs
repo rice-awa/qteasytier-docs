@@ -5,9 +5,9 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "QtEasyTier",
-      favicon: "./logo.png",
+      favicon: "./src/assets/logo.png",
       logo: {
-        src: "./logo.png",
+        src: "./src/assets/logo.png",
       },
       //routeMiddleware: "./src/routeData.ts",
       defaultLocale: "root", // 可选
