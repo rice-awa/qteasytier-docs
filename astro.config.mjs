@@ -32,7 +32,11 @@ export default defineConfig({
         },
         {
           label: "服务器指南",
-          items: ["servers/server-instruction"],
+          items: [
+            "servers/server-instruction",
+            "servers/deploy-personal",
+            "servers/deploy-public",
+          ],
         },
         {
           label: "部分使用场景",
