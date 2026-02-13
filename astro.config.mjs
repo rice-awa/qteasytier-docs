@@ -7,7 +7,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "QtEasyTier",
-      favicon: "/logo.png",
+      favicon: "/images/logo.png",
       logo: {
         src: "./src/assets/logo.png",
       },
