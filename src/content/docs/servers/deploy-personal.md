@@ -12,6 +12,7 @@ title: 部署个人服务器
 - 除了服务器外，也可以使用能部署EasyTier的云资源，比如Docker，雨云云应用等。
 - 这种部署方法将会在后文部署公共服务器时介绍。
 :::
+---
 
 ## 使用 Windows 系统（带图形化界面）的服务器
 
@@ -53,9 +54,89 @@ title: 部署个人服务器
 :::tip
 记得在防火墙或服务器安全组开放对应的监听端口和协议
 :::
+---
 
 ## 使用Linux系统（无图形化界面）的服务器
 
 > 此处所述方法是通过直接下载EasyTier的二进制文件来部署，而非使用Docker。
 
-===待更新===
+1. **手动下载命令行程序**
+  [命令行程序地址](https://github.com/EasyTier/EasyTier/releases)
+  [GitHub加速](https://gh-proxy.org/)
+  - 首先从[命令行程序地址](https://github.com/EasyTier/EasyTier/releases)中根据自身设备硬件架构获取对应版本easytier cli程序
+  - 接着将GitHub加速链接拼接到easytier程序下载链接前，构成如下加速下载链接：
+    https://gh-proxy.org/https://github.com/EasyTier/EasyTier/releases/download/v2.5.0/easytier-linux-x86_64-v2.5.0.zip
+  - 使用以下命令检测easytier内核版本
+   ::: code-group
+
+   ```bash [Linux / MacOS / FreeBSD]
+   ./easytier-core --version
+   ```
+
+> EasyTier国内临时下载地址：https://easytier.nkbpal.cn/
+
+2. **一键安装脚本（仅 Linux）**
+
+   注意：一键脚本依赖 `unzip`，请提前下载并安装。
+::: code-group
+
+   ```bash
+   wget -O /tmp/easytier.sh "https://raw.githubusercontent.com/EasyTier/EasyTier/main/script/install.sh" && sudo bash /tmp/easytier.sh install --gh-proxy https://ghfast.top/
+   ```
+
+   脚本执行成功后，EasyTier 的二进程程序会安装到 `/opt/easytier` 目录下，配置文件位于 `/opt/easytier/config/default.conf`。
+
+   配置文件可通过 [配置文件生成器](https://easytier.cn/web/index.html#/config_generator) 生成。
+> 临时配置文件生成（暂时选项不全）：https://easytier.nkbpal.cn/easytier.html
+
+   EasyTier 会被注册为系统服务，可以通过以下命令管理：
+
+   ```bash
+   systemctl start easytier@default
+   systemctl stop easytier@default
+   systemctl status easytier@default
+   systemctl restart easytier@default
+   ```
+> **不建议**手动更改一键安装脚本中的github加速链接！
+> 一键安装脚本安装失败后重试请**先删除**/opt目录下的/easytier文件夹！
+> 一键安装脚本仅支持安装**稳定版**，Pre-release版本仅支持手动安装！
+
+3. **通过源码安装**
+
+   ```sh [cargo]
+   cargo install --git https://github.com/EasyTier/EasyTier.git easytier
+   ```
+
+   源码安装需要 Rust 环境，并且安装 LLVM。
+
+4. **(可选)安装 Shell 补全功能**
+
+   ```fish
+   # Fish 补全
+   easytier-core --gen-autocomplete fish > ~/.config/fish/completions/easytier-core.fish
+   easytier-cli gen-autocomplete fish > ~/.config/fish/completions/easytier-core.fish
+   ```
+  
+## (可选)通过STUN内网穿透部署个人服务器
+本部分内容基于[lucky](https://lucky666.cn/)或其他STUN内网穿透软件实现，以下以lucky为例。
+### 功能介绍
+STUN（Session Traversal Utilities for NAT）内网穿透技术可以帮助解决因NAT（Network Address Translation）技术所带来的网络连接问题。STUN技术允许**NAT1**用户获取公网端口，通过路由端口转发或者LUCKY内置转发，将内网服务端口暴露到外网，从而实现内网穿透的目的。
+
+### 使用前需知
+STUN功能提供的端口穿透仅用于体验，无法保证端口变化的频率。请注意，对于与STUN稳定性相关的问题，无法提供技术支持。同时，我们也不提供任何关于如何访问内网的无公网v4方案。
+
+> STUN内网穿透基础使用说明详见[STUN内网穿透](https://lucky666.cn/docs/modules/stun)
+
+### 实现步骤
+1. 成功实现STUN内网穿透
+2. 通过动态域名(DDNS)绑定家庭宽带公网Ipv4地址
+3. 获取STUN内网穿透端口变化
+   - （不推荐）[使用邮件通知端口变化情况](https://www.bilibili.com/read/cv34705222/?from=readlist&opus_fallback=1)
+   - （推荐）[使用lucky-DDNS配置传递IP及端口变化](https://www.bilibili.com/read/cv41904858/?from=readlist&opus_fallback=1)
+   - 通过HTML网页、使用Cloudflare的重定向规则等方法通知端口变化情况
+4. 通过DNS的TXT记录传递IP及端口
+   - 记录名称：要更新的域名
+   - 选择记录类型：TXT
+   - 记录内容：填写要添加到TXT记录中的内容 如：tcp://{STUN_规则名_ADDR}
+> 优点：简单易行
+> 缺点：DNS记录在全球范围内的传递需要时间，根据各地运营商DNS同步策略而定，一般不超过30分钟。
