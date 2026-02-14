@@ -34,6 +34,7 @@ export default defineConfig({
           label: "服务器指南",
           items: [
             "servers/server-instruction",
+            "servers/public-servers-list",
             "servers/deploy-personal",
             "servers/deploy-public",
             "servers/nat-traversal",
