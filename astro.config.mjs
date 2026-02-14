@@ -36,6 +36,7 @@ export default defineConfig({
             "servers/server-instruction",
             "servers/deploy-personal",
             "servers/deploy-public",
+            "servers/nat-traversal",
           ],
         },
         {
