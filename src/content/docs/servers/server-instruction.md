@@ -18,7 +18,25 @@ QtEasyTier收集了一些社区大佬创建的公共服务器，你可以选择�
 :::tip
 - 公共服务器列表并非实时更新，可能部分服务器已失效。
 - 服务器列表存储在安装目录下的`publuicserver.json`文件中,你可以手动编辑该文件来添加或删除服务器。
-- 作者会不定时在[此处](/servers/public-servers)更新公共服务器列表（JSON格式），您可以选择添加或者替换安装目录下的文件。
+- 作者会不定时在[此处](/servers/public-servers-list)更新公共服务器列表（JSON格式），您可以选择添加或者替换安装目录下的文件。
 :::
 
  ![serverlist.png](../assets/serverlist.png)
+
+ ## 自己部署服务器
+
+ 如果您觉得使用公共服务器不满意或不放心，您也可以选择自己部署服务器，具体请参考以下文档。
+
+ - [部署个人服务器](/servers/deploy-personal)
+ - [部署公共服务器](/servers/deploy-public)
+ - [内网穿透部署服务器](/servers/nat-traversal)
+
+ > 服务器端的安装有`GUI`、`命令行(easytier-core)`、`Docker/云应用容器化部署`等多种方式。
+ > 其中，GUI方式需要服务器系统有图形化界面，本教程中使用QtEasyTier部署。
+ > 命令行、容器化的方式使用 EasyTier 官方的核心二进制文件`easytier-core`。
+ > easytier-core的启动方式有**启动参数**、**配置文件**、**Web控制台**3种方式，教程中会尽可能都涉及。
+
+:::tip
+部署的服务器不仅可以使用QtEasyTier连接，理论上只要是使用 EasyTier 作为后端，且支持指定网络名称和密码的组网工具都可以加入。
+如 Astral Game、EasyTier-GUI（官方图形界面）、EasyTier-Manager 等。
+:::

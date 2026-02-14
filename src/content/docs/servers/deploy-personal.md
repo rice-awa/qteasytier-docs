@@ -2,6 +2,11 @@
 title: 部署个人服务器
 ---
 
+:::tip
+本篇文档使用 GUI 和 命令行+配置文件 两种方式部署个人服务器节点。
+如需使用其他方式部署请参考[部署公共服务器](/servers/deploy-public)。
+:::
+
 如果您觉得使用公共节点不甚满意，不妨来试试部署个人的服务器节点。
 
 ## 前提要求：
@@ -58,7 +63,7 @@ title: 部署个人服务器
 
 ## 使用Linux系统（无图形化界面）的服务器
 
-> 此处所述方法是通过直接下载EasyTier的二进制文件来部署，而非使用Docker。
+> 此处所述方法是通过直接下载 EasyTier 官方的二进制文件，通过配置文件来部署，而非使用Docker。
 
 1. **手动下载命令行程序**
   [命令行程序地址](https://github.com/EasyTier/EasyTier/releases)
@@ -72,7 +77,10 @@ title: 部署个人服务器
    ./easytier-core --version
 ```
 
-> EasyTier国内临时下载地址：https://easytier.nkbpal.cn/
+:::tip
+- EasyTier国内临时下载地址：https://easytier.nkbpal.cn/
+- 此外，您也可以从QtEasyTier的安装包的etcore文件夹中提取easytier-core程序（目前仅Windows）。
+:::
 
 2. **一键安装脚本（仅 Linux）**
 
