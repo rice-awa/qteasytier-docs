@@ -101,8 +101,10 @@ title: 部署个人服务器
    systemctl status easytier@default    # 查看状态
    systemctl restart easytier@default   # 重启
 ```
-> **不建议**手动更改一键安装脚本中的github加速链接！
-> 一键安装脚本安装失败后重试请**先删除**/opt目录下的/easytier文件夹！
+> **不建议**手动更改一键安装脚本中的github加速链接！  
+
+> 一键安装脚本安装失败后重试请**先删除**/opt目录下的/easytier文件夹！  
+
 > 一键安装脚本仅支持安装**稳定版**，Pre-release版本仅支持手动安装！
 
 3. **(可选)安装 Shell 补全功能**
