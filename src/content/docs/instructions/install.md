@@ -8,6 +8,10 @@ title: 安装 QtEasyTier
 - 便携版：配置保存在程序安装目录，方便携带与分享。
 - 普通版：配置保存在系统标准目录，更新不会丢失。
 
+::: tip
+对于海外用户，可以从[GitHub的同步仓库](https://github.com/myqfeng/qt-easy-tier)下载源码
+:::
+
 > EXE安装包双击运行即可安装，zip文件无需安装，解压后点击QtEasyTier.exe即可运行。
 
 目前QtEasyTier仅支持Windows系统，后续将考虑支持Linux。
