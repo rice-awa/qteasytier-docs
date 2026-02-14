@@ -134,7 +134,7 @@ title: 部署个人服务器
 
 ```toml
 hostname = "明月清风"   # 节点名称，可自定义
-dhcp = true
+dhcp = false
 listeners = [
     "tcp://0.0.0.0:11010",
     "udp://0.0.0.0:11010",
@@ -198,5 +198,5 @@ WantedBy=multi-user.target
    sudo systemctl start easytier.service
 ```
 
-**至此，如果不出意外的化，EasyTier 服务器节点应该已经成功启动了。**
+**至此，如果不出意外，EasyTier 服务器节点应该已经成功启动了。**
 
