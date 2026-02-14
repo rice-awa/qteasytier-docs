@@ -11,7 +11,7 @@ title: 部署公共服务器
 
 > 在本节中，将会以雨云云应用为例，展示如何部署公共服务器。
 
-1. 登录雨云云应用控制台，点击创建应用，在应用商店找到 QtEasyTier 应用，点击部署，选择最新的web版本，其他选项按需调整，一般默认即可。
+1. 登录雨云云应用控制台，点击创建应用，在应用商店找到 EasyTier 应用，点击部署，选择最新的web版本，其他选项按需调整，一般默认即可。
 ![安装云应用](assets/deploy-public/cloud-app.png)
 
 2. 等待安装完成后，进入该应用的控制台。
@@ -89,8 +89,7 @@ exit 0
 
 :::tip
 以下内容转载自 **候汝已久** 大佬的文章，有删改<br>
-《使用免费的zeabur和claw搭建EasyTier私有节点
-》
+《使用免费的zeabur和claw搭建EasyTier私有节点》
 :::
 
 - zeabur: [https://zeabur.cn](https://zeabur.cn)
