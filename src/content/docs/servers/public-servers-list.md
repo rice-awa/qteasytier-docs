@@ -39,7 +39,7 @@ title: 公共服务器列表
   },
   {
     "url": "tcp://easytier.weiai.org.cn:11010",
-    "contributor": "网络收集"
+    "contributor": "为爱，唯爱"
   },
   {
     "url": "tcp://turn.js.629957.xyz:11012",
@@ -91,7 +91,7 @@ title: 公共服务器列表
   },
   {
     "url": "tcp://dy-et.teleseon.com:33010",
-    "contributor": "网络收集"
+    "contributor": "Atomire"
   },
   {
     "url": "tcp://160.202.238.39:36046",
@@ -99,7 +99,7 @@ title: 公共服务器列表
   },
   {
     "url": "tcp://us.maple367.eu.org:11010",
-    "contributor": "[海外]网络收集"
+    "contributor": "[海外]Maple"
   },
   {
     "url": "tcp://et.hongchenduzhe.cc.cd:25484",
@@ -107,7 +107,7 @@ title: 公共服务器列表
   },
   {
     "url": "tcp://tcp.us-west-1.clawcloudrun.com:45238",
-    "contributor": "[海外]网络收集"
+    "contributor": "[海外]凉城听暖"
   },
   {
     "url": "tcp://23.95.37.209:11010",
