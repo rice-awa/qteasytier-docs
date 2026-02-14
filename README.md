@@ -6,6 +6,9 @@ QtEasyTier项目地址：[https://gitee.com/viagrahuang/qt-easy-tier](https://gi
 
 如果您想为文档做贡献，欢迎提交Pull Request，作者将感激不尽。
 
+- 本仓库支持轻量级PR，您可以直接在Gitee上修改并提交PR。
+- 如果有较大改动，建议fork项目后在本地进行修改，最后提交Pull Request。
+
 ### 文档目录
 
 文档保存在`src/content/docs`目录下，该目录结构及其解释如下。
