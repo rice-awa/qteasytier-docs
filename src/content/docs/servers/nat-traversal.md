@@ -24,7 +24,7 @@ NAT1（完全锥形NAT）是指NAT设备对所有来自同一内网IP的流量�
 3. 创建FRP隧道
    由于运营商QOS以及节点设置，推荐优先选择TCP隧道
 ![SakuraFrp-创建隧道](assets/nat-traversal/SakuraFrp-创建隧道1.png)
-4. 修改本地IP为**局域网IP**（127.0.0.1等本地地址会导致组网无法连接）
+4. 修改本地IP为**局域网IP**（127.0.0.1等本地回环地址会导致组网无法连接）
 ![修改本地IP](assets/nat-traversal/SakuraFrp-创建隧道2.png)
 5. 修改本地端口（默认为11010，可选）
 ![创建隧道效果图](assets/nat-traversal/SakuraFrp-创建隧道3.png)
@@ -37,7 +37,7 @@ NAT1（完全锥形NAT）是指NAT设备对所有来自同一内网IP的流量�
 - 特别的，对于广电用户，在没有三线、多线可选的情况下，请尝试**移动**或**联通**节点
 
 ### 启动FRP隧道
-1. 根据设备下载合适的二次开发**启动器**或frpc
+1. 根据设备下载合适的二次开发**启动器**或***frpc***
 ![下载软件](assets/nat-traversal/SakuraFrp-下载软件.png)
 2. 配置启动器（根据引导操作，不详述）
 3. 启动隧道

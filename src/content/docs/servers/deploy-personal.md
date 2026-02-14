@@ -126,7 +126,7 @@ title: 部署个人服务器
 
 2. 如果配置文件生成器不可用，你也可以在 QtEasyTier 中新建一个组网，按 GUI 的步骤配置好后点击一次运行，然后在日志中找到如图所示的内容即为配置文件内容。
 
-![配置文件截图](QQ_1771048810335.png)
+![配置文件截图](assets/deploy-personal/config0.png)
 
 :::caution
 不可使用 QtEasyTier 中导出的 json 配置文件，与 ET 官方的 toml 配置文件格式不同。
