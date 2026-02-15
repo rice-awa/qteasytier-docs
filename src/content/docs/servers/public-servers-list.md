@@ -53,12 +53,14 @@ title: 公共服务器列表
 .tab-buttons {
   display: flex;
   margin-bottom: 15px;
+  align-items: flex-end;  /* 让按钮向底部对齐 */
   border-bottom: 1px solid var(--border-color, #eaeaea);
 }
 
 .tab-button {
   flex: 1;                    /* 让按钮等宽 */
-  padding: 10px 20px 0px;
+  height: 55px;               /* 固定高度55px */
+  padding: 10px 20px;
   background: none;
   border: none;
   cursor: pointer;
@@ -69,10 +71,6 @@ title: 公共服务器列表
   text-align: center;
   min-width: 0;               /* 避免 flex 子元素溢出 */
   white-space: nowrap;
-}
-
-.tab-button[data-tab="json-view"] {
-  padding: 10px 20px 15px;          /* JSON格式tab比表格视图高5px */
 }
 
 .tab-button:hover {
