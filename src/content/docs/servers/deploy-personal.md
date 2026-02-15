@@ -11,7 +11,7 @@ title: 部署个人服务器
 
 ## 前提要求：
 
-- 一台拥有公网IP地址的服务器(电脑)，EasyTier占用极低，几乎不影响服务器的正常运行。
+- 一台拥有可访问公网IP端口的服务器(电脑)，EasyTier占用极低，几乎不影响服务器的正常运行。
 
 ---
 
@@ -21,15 +21,14 @@ title: 部署个人服务器
 
 **作为“个人服务器”的节点应该具有以下特点：**
 1. 能够被自己网络中其他设备连接并中转流量。
-2. 一般情况下，不获取虚拟IP地址，相当于不参与这个组网。
-3. 不能被其他人的网络连接，只给自己使用。
+2. 不能被其他人的网络连接，只给自己使用。
+3. （可选）不获取虚拟IP地址，相当于不参与这个组网。
 
 按照以上思路，我们很容易配置出一个符合要求的“服务器”节点。
 
 ![1770990088337](assets/deploy-personal/1770990088337.png)
-
-- 在基础设置中，把DHCP关闭，并且不指定IP地址，这样在运行时就不会为该节点分配IP，满足条件2。
-- 开启私有模式，并设置相应的网络号和密码，这样就只有使用相同网络号和密码的设备才能连接到该节点，满足条件1,3。
+- 开启私有模式，并设置相应的网络号和密码，这样就只有使用相同网络号和密码的设备才能连接到该节点，满足条件1,2。
+- （可选）在基础设置中，把DHCP关闭，并且不指定IP地址，这样在运行时就不会为该节点分配IP，满足条件3。
 
 - 由于有公网直连且不参与组网，高级设置中大部分选项无意义，可以保持默认值。
 - 但KCP和QUIC的开关可以按需打开，这决定服务器是否接受KCP/QUIC协议的流量。
@@ -62,16 +61,29 @@ title: 部署个人服务器
 > 此处所述方法是通过直接下载 EasyTier 官方的二进制文件，通过配置文件来部署，而非使用Docker。
 
 ### 下载 EasyTier 命令行程序
-
 1. **手动下载命令行程序**
   [命令行程序地址](https://github.com/EasyTier/EasyTier/releases)
   [GitHub加速](https://gh-proxy.org/)
-  - 首先从[命令行程序地址](https://github.com/EasyTier/EasyTier/releases)中根据自身设备硬件架构获取对应版本easytier cli程序
-  - 接着将GitHub加速链接拼接到easytier程序下载链接前，构成如下加速下载链接：
+  - 从[命令行程序地址](https://github.com/EasyTier/EasyTier/releases)中根据自身设备硬件架构获取对应版本easytier程序
+  - 将[GitHub加速](https://gh-proxy.org/)链接拼接到easytier程序下载链接前，构成如下加速下载链接：
     https://gh-proxy.org/https://github.com/EasyTier/EasyTier/releases/download/v2.5.0/easytier-linux-x86_64-v2.5.0.zip
+  - 下载easytier程序
+  - 使用unzip解压压缩包
+    - 如果提示没有找到 unzip ，需要先 sudo apt update 再 sudo apt install unzip
+  - 移动二进制文件到/opt/easytier目录
+  - （可选）创建配置文件文件夹
+  - （可选）删除空文件夹
+  - 设置执行权限
   - 使用以下命令检测easytier内核版本
 
 ```bash [Linux / MacOS / FreeBSD]
+   curl -L https://gh-proxy.org/https://github.com/EasyTier/EasyTier/releases/download/v2.5.0/easytier-linux-x86_64-v2.5.0.zip -o /tmp/easytier_tmp_install.zip
+   unzip -o /tmp/easytier_tmp_install.zip -d /opt/easytier
+   mv /opt/easytier/easytier-linux-x86_64/* /opt/easytier/
+   mkdir /opt/easytier/config
+   rm -rf /opt/easytier/easytier-linux-x86_64/
+   sudo chmod +x /opt/easytier/easytier-core /opt/easytier/easytier-cli
+   cd /opt/easytier/
    ./easytier-core --version
 ```
 
@@ -80,14 +92,11 @@ title: 部署个人服务器
 - 此外，您也可以从QtEasyTier的安装包的etcore文件夹中提取easytier-core程序（目前仅Windows）。
 :::
 
-2. **一键安装脚本（仅 Linux）**
+2. **一键安装脚本**
 
-   注意：一键脚本依赖 `unzip`，请提前下载并安装。
+   注意：一键脚本依赖 `unzip`，如果提示没有找到 unzip ，需要先 sudo apt update 再 sudo apt install unzip
 
 ```bash
-   # 安装unzip (Debian)
-   sudo apt install unzip
-
    wget -O /tmp/easytier.sh "https://raw.githubusercontent.com/EasyTier/EasyTier/main/script/install.sh" && sudo bash /tmp/easytier.sh install --gh-proxy https://ghfast.top/
 ```
 
@@ -193,12 +202,23 @@ StartLimitIntervalSec=0
 WantedBy=multi-user.target
 ```
 
-3. 启用并启动服务
-
+3. 设置权限与加载服务
+  - 保存并退出编辑器后，执行以下命令让 systemd 重新加载服务配置：
 ```bash
-   sudo systemctl enable easytier.service
-   sudo systemctl start easytier.service
+   sudo systemctl daemon-reload
+```
+  - 让该服务在开机时自动启动：
+```bash
+   sudo systemctl enable easytier
+```
+  - 启动该服务：
+```bash
+   sudo systemctl start easytier
+```
+  - 你可以使用下面的命令查看服务状态和日志：
+```bash
+   systemctl status easytier
+   journalctl -u easytier
 ```
 
 **至此，如果不出意外，EasyTier 服务器节点应该已经成功启动了。**
-
