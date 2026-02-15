@@ -11,7 +11,7 @@ title: 部署公共服务器
 
 > 在本节中，将会以雨云云应用为例，展示如何部署公共服务器。
 
-1. 登录雨云云应用控制台，点击创建应用，在应用商店找到 QtEasyTier 应用，点击部署，选择最新的web版本，其他选项按需调整，一般默认即可。
+1. 登录雨云云应用控制台，点击创建应用，在应用商店找到 EasyTier 应用，点击部署，选择最新的web版本，其他选项按需调整，一般默认即可。
 ![安装云应用](assets/deploy-public/cloud-app.png)
 
 2. 等待安装完成后，进入该应用的控制台。
@@ -28,7 +28,6 @@ easytier-core --listeners tcp://0.0.0.0:11010 --listeners xxxxxx
 如果想要服务器只帮助建立P2P连接而不转发数据，可以通过开启转发 RPC 和 开启网络白名单实现。如果想要转发特定网络的数据，在白名单后接上对应的网络名即可
 
 ```bash
-# 多个端口或协议时需分别指定
 easytier-core --relay-all-peer-rpc --relay-network-whitelist xxxxxx
 ```
 
@@ -47,23 +46,17 @@ easytier-core --relay-all-peer-rpc --relay-network-whitelist xxxxxx
 
 ```shell
 #!/bin/bash
-
-# 要检查的进程名（不包含参数）
 PROCESS_NAME="easytier-core"
 # 要执行的完整命令(这里替换为你实际要运行的命令)
 FULL_COMMAND="easytier-core --listeners tcp://0.0.0.0:11010 --relay-all-peer-rpc --relay-network-whitelist xxxxxx"......
 
-# 检查进程是否正在运行
-# 使用 pgrep 查找进程，-x 表示精确匹配进程名
 if pgrep -x "$PROCESS_NAME" > /dev/null
 then
     echo "$(date): $PROCESS_NAME 正在运行，无需操作"
 else
     echo "$(date): $PROCESS_NAME 未运行，正在启动..."
-    # 启动命令，使用 nohup 和 & 在后台运行
     nohup $FULL_COMMAND > /dev/null 2>&1 &
     
-    # 等待一秒检查是否启动成功
     sleep 3
     if pgrep -x "$PROCESS_NAME" > /dev/null
     then
@@ -89,8 +82,7 @@ exit 0
 
 :::tip
 以下内容转载自 **候汝已久** 大佬的文章，有删改<br>
-《使用免费的zeabur和claw搭建EasyTier私有节点
-》
+《使用免费的zeabur和claw搭建EasyTier私有节点》
 :::
 
 - zeabur: [https://zeabur.cn](https://zeabur.cn)

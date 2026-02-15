@@ -94,10 +94,6 @@ title: 公共服务器列表
     "contributor": "Atomire"
   },
   {
-    "url": "tcp://160.202.238.39:36046",
-    "contributor": "网络收集"
-  },
-  {
     "url": "tcp://us.maple367.eu.org:11010",
     "contributor": "[海外]Maple"
   },
