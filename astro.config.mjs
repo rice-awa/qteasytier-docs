@@ -28,6 +28,7 @@ export default defineConfig({
             "instructions/install",
             "instructions/simple-using",
             "instructions/oneclick",
+            "instructions/web-dashboard",
           ],
         },
         {
