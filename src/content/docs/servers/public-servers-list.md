@@ -4,17 +4,20 @@ title: 公共服务器列表
 
 ### 以下是 QtEasyTier 收集的一些公共服务器列表
 
+**此页面由[凉城听暖](https://blog.lctn.site/)大佬维护**
+
 :::tip
 - 数据并非实时更新，可能部分服务器已失效。
 - 格式符合QtEasyTier公共服务器列表存储的json格式，您可以直接替换或添加到安装目录下的`publuicserver.json`文件中。
 :::
 
-此外，您可以在这个由凉城听暖大佬搭建的[Uptime界面](https://uptime.lctn.site/status/easytier)查看这些公共服务器的运行状态。
+此外，您可以在这个[Uptime界面](https://uptime.lctn.site/status/easytier)查看这些公共服务器的运行状态。
+
 
 <div class="tab-container">
   <div class="tab-buttons">
-    <button class="tab-button active" data-tab="table-view">表格视图</button>
-    <button class="tab-button" data-tab="json-view">JSON格式</button>
+    <button class="tab-button" data-tab="table-view">表格视图</button>
+    <button class="tab-button active" data-tab="json-view">JSON格式</button>
   </div>
   
   <div id="table-view" class="tab-content active">
@@ -55,7 +58,7 @@ title: 公共服务器列表
 
 .tab-button {
   flex: 1;                    /* 让按钮等宽 */
-  padding: 10px 20px;
+  padding: 10px 20px 0px;
   background: none;
   border: none;
   cursor: pointer;
@@ -66,6 +69,10 @@ title: 公共服务器列表
   text-align: center;
   min-width: 0;               /* 避免 flex 子元素溢出 */
   white-space: nowrap;
+}
+
+.tab-button[data-tab="json-view"] {
+  padding: 10px 20px 15px;          /* JSON格式tab比表格视图高5px */
 }
 
 .tab-button:hover {
