@@ -7,6 +7,7 @@ export default defineConfig({
     starlight({
       title: "QtEasyTier",
       favicon: "/favicon.ico",
+      customCss: ["./src/styles/global.css"],
       logo: {
         src: "./src/assets/logo.png",
       },

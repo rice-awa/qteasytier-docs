@@ -1,0 +1,61 @@
+/* 全局背景图 */
+body {
+  background-image: url('/background.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+}
+
+/* 背景蒙版 */
+body::before {
+  content: '' !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+
+[data-theme="dark"] body::before {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* 内容区域半透明背景 */
+.main {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+}
+
+[data-theme="dark"] .main {
+  background-color: rgba(15, 23, 42, 0.88) !important;
+}
+
+/* 左侧导航栏半透明 */
+#starlight__sidebar {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="dark"] #starlight__sidebar {
+  background-color: rgba(15, 23, 42, 0.8) !important;
+}
+
+/* 右侧目录栏半透明 */
+.right-sidebar {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="dark"] .right-sidebar {
+  background-color: rgba(15, 23, 42, 0.8) !important;
+}
+
+/* 顶栏半透明 */
+header {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="dark"] header {
+  background-color: rgba(15, 23, 42, 0.8) !important;
+}

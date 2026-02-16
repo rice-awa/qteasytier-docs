@@ -53,9 +53,9 @@ title: 公共服务器列表
   --border-color: #eaeaea;
   --text-color: #666;
   --text-color-dark: #333;
-  --table-header-bg: #f5f5f5;
-  --table-hover-bg: #f9f9f9;
-  --json-bg: #f5f5f5;
+  --table-header-bg: rgba(245, 245, 245, 0.8);
+  --table-hover-bg: rgba(249, 249, 249, 0.8);
+  --json-bg: rgba(245, 245, 245, 0.8);
   --error-color: #ff4d4f;
 }
 
@@ -65,9 +65,9 @@ html[data-theme="dark"],
   --border-color: #444;
   --text-color: #ccc;
   --text-color-dark: #fff;
-  --table-header-bg: #333;
-  --table-hover-bg: #444;
-  --json-bg: #2d2d2d;
+  --table-header-bg: rgba(51, 51, 51, 0.8);
+  --table-hover-bg: rgba(68, 68, 68, 0.8);
+  --json-bg: rgba(45, 45, 45, 0.8);
   --error-color: #ff7875;
 }
 
