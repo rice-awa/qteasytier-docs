@@ -53,8 +53,9 @@ title: 公共服务器列表
   --border-color: #eaeaea;
   --text-color: #666;
   --text-color-dark: #333;
-  --table-header-bg: rgba(245, 245, 245, 0.8);
-  --table-hover-bg: rgba(249, 249, 249, 0.8);
+  --primary-color: rgb(102, 204, 255);
+  --table-header-bg: rgba(102, 204, 255, 0.8);
+  --table-hover-bg: rgba(102, 204, 255, 0.3);
   --json-bg: rgba(245, 245, 245, 0.8);
   --error-color: #ff4d4f;
 }
@@ -65,8 +66,9 @@ html[data-theme="dark"],
   --border-color: #444;
   --text-color: #ccc;
   --text-color-dark: #fff;
-  --table-header-bg: rgba(51, 51, 51, 0.8);
-  --table-hover-bg: rgba(68, 68, 68, 0.8);
+  --primary-color: rgb(102, 204, 255);
+  --table-header-bg: rgba(102, 204, 255, 0.5);
+  --table-hover-bg: rgba(102, 204, 255, 0.2);
   --json-bg: rgba(45, 45, 45, 0.8);
   --error-color: #ff7875;
 }
@@ -104,7 +106,7 @@ html[data-theme="dark"],
 
 .tab-button.active {
   color: var(--text-color-dark);
-  border-bottom-color: var(--text-color-dark);
+  border-bottom-color: var(--primary-color);
   font-weight: bold;
 }
 

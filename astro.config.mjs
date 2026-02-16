@@ -56,7 +56,8 @@ export default defineConfig({
           label: "其他",
           items: [
             "other/donate", 
-            "other/disclaimer"
+            "other/disclaimer",
+            "other/acknowledgments",
           ],
         },
       ],

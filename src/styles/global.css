@@ -1,3 +1,23 @@
+/* 全局主题色 */
+:root {
+  --sl-hue: 200;
+  --sl-color-accent: rgb(102, 204, 255);
+  --sl-color-accent-low: rgba(102, 204, 255, 0.2);
+  --sl-color-accent-high: rgb(40, 160, 210);
+}
+
+/* 导航栏选中项文字颜色 - 浅色主题 */
+.sidebar-content a[aria-current="page"],
+.sidebar-content .active {
+  color: #1a1a1a !important;
+}
+
+/* 导航栏选中项文字颜色 - 深色主题 */
+[data-theme="dark"] .sidebar-content a[aria-current="page"],
+[data-theme="dark"] .sidebar-content .active {
+  color: #ffffff !important;
+}
+
 /* 全局背景图 */
 body {
   background-image: url('/background.jpg') !important;
@@ -45,6 +65,9 @@ body::before {
 /* 右侧目录栏半透明 */
 .right-sidebar {
   background-color: rgba(255, 255, 255, 0.8) !important;
+  width: 20rem !important;
+  min-width: 20rem !important;
+  right: 0 !important;
 }
 
 [data-theme="dark"] .right-sidebar {
