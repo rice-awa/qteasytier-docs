@@ -65,14 +65,15 @@ body::before {
 /* 右侧目录栏半透明 */
 .right-sidebar {
   background-color: rgba(255, 255, 255, 0.8) !important;
-  width: 20rem !important;
-  min-width: 20rem !important;
+  max-width: 18rem !important;
+  min-width: 18rem !important;
   right: 0 !important;
 }
 
 [data-theme="dark"] .right-sidebar {
   background-color: rgba(15, 23, 42, 0.8) !important;
 }
+
 
 /* 顶栏半透明 */
 header {
@@ -88,4 +89,9 @@ header {
   .hero img {
     width: 500px !important;
   }
+}
+
+/* 文档内容区域图片圆角 */
+.sl-flex img {
+  border-radius: 10px !important;
 }

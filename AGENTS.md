@@ -21,19 +21,22 @@ qteasytier-docs/
 ├── tsconfig.json         # TypeScript 配置
 ├── public/               # 静态资源
 │   ├── favicon.ico
-│   └── publicserver.json
+│   ├── background.jpg    # 背景图片
+│   └── publicserver.json # 公共服务器列表
 ├── src/
-│   ├── assets/           # 图片资源（logo 等）
+│   ├── assets/           # 图片资源（logo、qtet 等）
+│   ├── styles/           # 全局样式
+│   │   └── global.css    # 自定义 CSS 样式
 │   ├── content/          # 文档内容目录
 │   │   └── docs/         # 主要文档存放位置
 │   │       ├── docs-home.md     # 文档首页
 │   │       ├── index.mdx        # 入口页面
-│   │       ├── assets/          # 文档图片资源
-│   │       ├── config/          # 配置相关文档
+│   │       ├── assets/          # 文档公共图片资源
+│   │       ├── config/          # 配置相关文档（预留目录）
 │   │       ├── instructions/    # 使用说明文档
 │   │       ├── servers/         # 服务器指南文档
 │   │       ├── using/           # 使用场景文档
-│   │       └── other/           # 其他文档（捐赠、免责声明等）
+│   │       └── other/           # 其他文档
 │   └── content.config.ts # 内容集合配置 (Starlight docsLoader)
 └── dist/                 # 构建输出目录
 ```
@@ -63,7 +66,9 @@ pnpm preview
 | `instructions/` | 使用说明 | install, simple-using, oneclick, web-dashboard |
 | `servers/` | 服务器指南 | server-instruction, public-servers-list, deploy-personal, deploy-public, nat-traversal |
 | `using/` | 使用场景 | mc |
-| `other/` | 其他 | donate, disclaimer |
+| `other/` | 其他 | disclaimer, license, donate, acknowledgments, privacy-policy |
+
+> 注：`privacy-policy.md` 未在侧边栏显示，仅通过链接访问。
 
 ## 文档编写规范
 
@@ -114,7 +119,12 @@ sidebar: [
   },
   {
     label: "其他",
-    items: ["other/donate", "other/disclaimer"],
+    items: [
+      "other/disclaimer",
+      "other/license",
+      "other/donate",
+      "other/acknowledgments",
+    ],
   },
 ]
 ```
@@ -146,6 +156,16 @@ sidebar: [
 - 配置网站基础信息 (title, favicon, logo)
 - 配置多语言支持 (当前仅简体中文)
 - 配置侧边栏导航结构
+- 配置自定义 CSS (`./src/styles/global.css`)
+- 配置图片服务（已禁用图片优化，保持原图画质）
+
+```javascript
+image: {
+  service: {
+    entrypoint: "astro/assets/services/noop",
+  },
+},
+```
 
 ### src/content.config.ts
 
