@@ -46,6 +46,30 @@ title: 公共服务器列表
 * {
   box-sizing: border-box;
 }
+
+/* 浅色模式默认变量 */
+:root {
+  --border-color: #eaeaea;
+  --text-color: #666;
+  --text-color-dark: #333;
+  --table-header-bg: #f5f5f5;
+  --table-hover-bg: #f9f9f9;
+  --json-bg: #f5f5f5;
+  --error-color: #ff4d4f;
+}
+
+/* 深色模式变量 - Starlight 使用 data-theme 属性 */
+html[data-theme="dark"],
+:root[data-theme="dark"] {
+  --border-color: #444;
+  --text-color: #ccc;
+  --text-color-dark: #fff;
+  --table-header-bg: #333;
+  --table-hover-bg: #444;
+  --json-bg: #2d2d2d;
+  --error-color: #ff7875;
+}
+
 .tab-container {
   margin: 20px 0;
 }
@@ -53,33 +77,33 @@ title: 公共服务器列表
 .tab-buttons {
   display: flex;
   margin-bottom: 15px;
-  align-items: flex-end;  /* 让按钮向底部对齐 */
-  border-bottom: 1px solid var(--border-color, #eaeaea);
+  align-items: flex-end;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .tab-button {
-  flex: 1;                    /* 让按钮等宽 */
-  height: 55px;               /* 固定高度55px */
+  flex: 1;
+  height: 55px;
   padding: 10px 20px;
   background: none;
   border: none;
   cursor: pointer;
   font-size: 14px;
-  color: var(--text-color, #666);
+  color: var(--text-color);
   border-bottom: 2px solid transparent;
   transition: all 0.3s ease;
   text-align: center;
-  min-width: 0;               /* 避免 flex 子元素溢出 */
+  min-width: 0;
   white-space: nowrap;
 }
 
 .tab-button:hover {
-  color: var(--text-color-dark, #333);
+  color: var(--text-color-dark);
 }
 
 .tab-button.active {
-  color: var(--text-color-dark, #333);
-  border-bottom-color: var(--text-color-dark, #333); /* 启用下边框颜色 */
+  color: var(--text-color-dark);
+  border-bottom-color: var(--text-color-dark);
   font-weight: bold;
 }
 
@@ -93,7 +117,7 @@ title: 公共服务器列表
 
 .server-table {
   width: 100%;
-  table-layout: fixed;          /* 固定列宽，由宽度定义分配 */
+  table-layout: fixed;
   border-collapse: collapse;
   font-size: 14px;
 }
@@ -101,35 +125,35 @@ title: 公共服务器列表
 .server-table th,
 .server-table td {
   padding: 10px;
-  border: 1px solid var(--border-color, #eaeaea);
+  border: 1px solid var(--border-color);
   text-align: left;
-  vertical-align: middle;       /* 确保垂直居中 */
-  word-break: break-word;       /* 兼容性更好的换行 */
+  vertical-align: middle;
+  word-break: break-word;
 }
 
 .server-table th:first-child,
 .server-table td:first-child {
-  font-family: monospace;       /* 地址列使用等宽字体 */
-  width: 70%;                   /* 地址列宽度 70% */
+  font-family: monospace;
+  width: 70%;
 }
 
 .server-table th:last-child,
 .server-table td:last-child {
-  width: 30%;                   /* 贡献者列宽度 30% */
+  width: 30%;
 }
 
 .server-table th {
-  background-color: var(--table-header-bg, #f5f5f5);
+  background-color: var(--table-header-bg);
   font-weight: bold;
-  font-family: monospace;       /* 表头字体与内容统一，避免视觉偏移 */
+  font-family: monospace;
 }
 
 .server-table tr:hover {
-  background-color: var(--table-hover-bg, #f9f9f9);
+  background-color: var(--table-hover-bg);
 }
 
 .json-container {
-  background-color: var(--json-bg, #f5f5f5);
+  background-color: var(--json-bg);
   padding: 15px;
   border-radius: 4px;
   overflow-x: auto;
@@ -140,73 +164,21 @@ title: 公共服务器列表
   font-family: monospace;
   font-size: 14px;
   line-height: 1.5;
-  color: var(--text-color, #333);
-  white-space: pre-wrap;        /* 自动换行，避免横向滚动条 */
+  color: var(--text-color-dark);
+  white-space: pre-wrap;
   word-break: break-word;
 }
 
 #loading {
   padding: 20px;
   text-align: center;
-  color: var(--text-color, #666);
+  color: var(--text-color);
 }
 
 #error {
   padding: 20px;
   text-align: center;
-  color: var(--error-color, #ff4d4f);
-}
-
-/* 深色模式适配 */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --border-color: #444;
-    --text-color: #ccc;
-    --text-color-dark: #fff;
-    --table-header-bg: #333;
-    --table-hover-bg: #444;
-    --json-bg: #2d2d2d;
-    --error-color: #ff7875;
-  }
-  
-  .server-table th,
-  .server-table td {
-    border-color: #444;
-  }
-  
-  .server-table th {
-    background-color: #333;
-  }
-  
-  .server-table tr:hover {
-    background-color: #444;
-  }
-  
-  .json-container {
-    background-color: #2d2d2d;
-  }
-  
-  #json-content {
-    color: #ccc;
-  }
-  
-  #loading {
-    color: #ccc;
-  }
-  
-  .tab-buttons {
-    border-bottom-color: #444;
-  }
-  
-  .tab-button {
-    color: #ccc;
-  }
-  
-  .tab-button:hover,
-  .tab-button.active {
-    color: #fff;
-    border-bottom-color: #fff;
-  }
+  color: var(--error-color);
 }
 </style>
 
