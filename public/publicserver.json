@@ -85,7 +85,7 @@
   },
   {
     "url": "tcp://et.hongchenduzhe.cc.cd:25484",
-    "contributor": "[海外]网络收集"
+    "contributor": "[海外]红尘渡者"
   },
   {
     "url": "tcp://tcp.us-west-1.clawcloudrun.com:45238",
@@ -94,5 +94,13 @@
   {
     "url": "tcp://23.95.37.209:11010",
     "contributor": "[海外]网络收集"
+  },
+  {
+    "url": "tcp://et2.sbgov.cn:11010",
+    "contributor": "[海外]折翼喵"
+  },
+  {
+    "url": "tcp://et.ziyii.top:11010",
+    "contributor": "[海外]ziyii"
   }
 ]
