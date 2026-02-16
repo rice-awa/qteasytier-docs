@@ -59,3 +59,10 @@ header {
 [data-theme="dark"] header {
   background-color: rgba(15, 23, 42, 0.8) !important;
 }
+
+/* Hero 图片放大 - 响应式 */
+@media (min-width: 600px) {
+  .hero img {
+    width: 500px !important;
+  }
+}

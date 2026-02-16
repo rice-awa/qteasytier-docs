@@ -3,6 +3,12 @@ import starlight from "@astrojs/starlight";
 
 export default defineConfig({
   site: "https://qtet.070219.xyz",
+  image: {
+    // 禁用图片优化，保持原图画质
+    service: {
+      entrypoint: "astro/assets/services/noop",
+    },
+  },
   integrations: [
     starlight({
       title: "QtEasyTier",
@@ -48,7 +54,10 @@ export default defineConfig({
         },
         {
           label: "其他",
-          items: ["other/donate", "other/disclaimer"],
+          items: [
+            "other/donate", 
+            "other/disclaimer"
+          ],
         },
       ],
     }),
