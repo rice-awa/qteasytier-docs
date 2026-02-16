@@ -60,31 +60,54 @@ title: 部署个人服务器
 
 > 此处所述方法是通过直接下载 EasyTier 官方的二进制文件，通过配置文件来部署，而非使用Docker。
 
-### 下载 EasyTier 命令行程序
+### 下载 EasyTier 命令行程序（easytier-core）
 1. **手动下载命令行程序**
-  [命令行程序地址](https://github.com/EasyTier/EasyTier/releases)
-  [GitHub加速](https://gh-proxy.org/)
-  - 从[命令行程序地址](https://github.com/EasyTier/EasyTier/releases)中根据自身设备硬件架构获取对应版本easytier程序
-  - 将[GitHub加速](https://gh-proxy.org/)链接拼接到easytier程序下载链接前，构成如下加速下载链接：
-    https://gh-proxy.org/https://github.com/EasyTier/EasyTier/releases/download/v2.5.0/easytier-linux-x86_64-v2.5.0.zip
-  - 下载easytier程序
-  - 使用unzip解压压缩包
-    - 如果提示没有找到 unzip ，需要先 sudo apt update 再 sudo apt install unzip
-  - 移动二进制文件到/opt/easytier目录
-  - （可选）创建配置文件文件夹
-  - （可选）删除空文件夹
-  - 设置执行权限
-  - 使用以下命令检测easytier内核版本
 
-```bash [Linux / MacOS / FreeBSD]
-   curl -L https://gh-proxy.org/https://github.com/EasyTier/EasyTier/releases/download/v2.5.0/easytier-linux-x86_64-v2.5.0.zip -o /tmp/easytier_tmp_install.zip
-   unzip -o /tmp/easytier_tmp_install.zip -d /opt/easytier
-   mv /opt/easytier/easytier-linux-x86_64/* /opt/easytier/
-   mkdir /opt/easytier/config
-   rm -rf /opt/easytier/easytier-linux-x86_64/
-   sudo chmod +x /opt/easytier/easytier-core /opt/easytier/easytier-cli
-   cd /opt/easytier/
-   ./easytier-core --version
+  - 从[EasyTier 下载地址](https://github.com/EasyTier/EasyTier/releases)中根据自身设备硬件架构获取对应版本easytier命令行程序
+> 例如，64位的AMD/Intel处理器，选择 `easytier-linux-x86_64-v2.5.0.zip`
+
+  - （可选）将[GitHub加速地址：https://gh-proxy.org/](https://gh-proxy.org/)链接拼接到easytier程序下载链接前，构成如下加速下载链接并完成下载：
+```
+https://gh-proxy.org/https://github.com/EasyTier/EasyTier/releases/download/v2.5.0/easytier-linux-x86_64-v2.5.0.zip
+```
+
+也可以使用 curl 命令下载：
+```bash
+# 安装 curl (Debian)
+sudo apt update && sudo apt install curl
+# 下载 easytier 压缩包到 /tmp 目录
+curl -L https://gh-proxy.org/https://github.com/EasyTier/EasyTier/releases/download/v2.5.0/easytier-linux-x86_64-v2.5.0.zip -o /tmp/easytier_tmp_install.zip
+```
+ 
+  - 解压压缩包并移动二进制文件到/opt/easytier目录
+```bash
+# 安装 unzip 工具
+sudo apt update && sudo apt install unzip
+# 解压到 /opt/easytier 目录
+unzip -o /tmp/easytier_tmp_install.zip -d /opt/easytier
+# 移动二进制文件到 /opt/easytier 目录
+mv /opt/easytier/easytier-linux-x86_64/* /opt/easytier/
+```
+
+:::tip
+如果使用 1Panel 面板等环境，也可以自行使用其他方式解压。
+:::
+
+  - （可选）创建配置文件文件夹与删除空文件夹
+```bash
+mkdir /opt/easytier/config
+rm -rf /opt/easytier/easytier-linux-x86_64/
+```
+
+  - 设置执行权限
+```bash
+sudo chmod +x /opt/easytier/easytier-core /opt/easytier/easytier-cli
+```
+
+  - 使用以下命令检测easytier内核版本，如果有显示则说明安装成功
+```bash
+cd /opt/easytier/
+./easytier-core --version
 ```
 
 :::tip
@@ -94,9 +117,12 @@ title: 部署个人服务器
 
 2. **一键安装脚本**
 
-   注意：一键脚本依赖 `unzip`，如果提示没有找到 unzip ，需要先 sudo apt update 再 sudo apt install unzip
+   注意：一键脚本依赖 `unzip`，如果提示没有找到 unzip ，需要先安装
 
 ```bash
+   # 安装 unzip 工具 
+   sudo apt update && sudo apt install unzip 
+   # 一键安装脚本
    wget -O /tmp/easytier.sh "https://raw.githubusercontent.com/EasyTier/EasyTier/main/script/install.sh" && sudo bash /tmp/easytier.sh install --gh-proxy https://ghfast.top/
 ```
 
