@@ -11,7 +11,8 @@ title: 公共服务器列表
 - JSON 格式符合 QtEasyTier 公共服务器列表存储的json格式，您可以直接替换或添加到安装目录下的`publuicserver.json`文件中。
 :::
 
-此外，您可以在这个[Uptime界面](https://uptime.lctn.site/status/easytier)查看这些公共服务器的运行状态。
+- 您还可以在这个[Uptime界面](https://uptime.lctn.site/status/easytier)查看这些公共服务器的运行状态。
+- 点击<a href="/publicserver.json" download>此处</a>下载完整json文件。
 
 
 <div class="tab-container">

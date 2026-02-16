@@ -78,6 +78,11 @@ sudo apt update && sudo apt install curl
 # 下载 easytier 压缩包到 /tmp 目录
 curl -L https://gh-proxy.org/https://github.com/EasyTier/EasyTier/releases/download/v2.5.0/easytier-linux-x86_64-v2.5.0.zip -o /tmp/easytier_tmp_install.zip
 ```
+
+:::tip
+- EasyTier国内临时下载地址：https://easytier.nkbpal.cn/
+- 此外，您也可以从QtEasyTier的安装包的etcore文件夹中提取easytier-core程序（目前仅Windows）。
+:::
  
   - 解压压缩包并移动二进制文件到/opt/easytier目录
 ```bash
@@ -109,11 +114,6 @@ sudo chmod +x /opt/easytier/easytier-core /opt/easytier/easytier-cli
 cd /opt/easytier/
 ./easytier-core --version
 ```
-
-:::tip
-- EasyTier国内临时下载地址：https://easytier.nkbpal.cn/
-- 此外，您也可以从QtEasyTier的安装包的etcore文件夹中提取easytier-core程序（目前仅Windows）。
-:::
 
 2. **一键安装脚本**
 

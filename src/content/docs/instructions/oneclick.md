@@ -8,6 +8,17 @@ title: 一键联机
 
 一键联机是QtEasyTier1.1.0版本新增的特色功能，旨在帮助用户（特别是联机游戏玩家）快速开启联机，而无需复杂的组网知识与操作。
 
+### 视频教程
+<div style="position: relative; width: 100%; padding-bottom: 56.25%;">
+  <iframe
+    style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;"
+    src="//player.bilibili.com/player.html?isOutside=true&aid=116040436619021&bvid=BV1QvcgzAEAM&cid=35937584991&p=1"
+    frameborder="0"
+    framespacing="0"
+    allowfullscreen="true">
+  </iframe>
+</div>
+
 ## 房主操作
 
 1. 点击我做房主页面，默认添加有几个公益的服务器。
