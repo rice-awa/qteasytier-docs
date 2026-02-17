@@ -28,41 +28,32 @@ hero:
       variant: minimal
 ---
 
-import FeatureCard from '../../components/FeatureCard.astro';
-import FeatureCardGrid from '../../components/FeatureCardGrid.astro';
+import FeatureCards from '../../components/FeatureCards.astro';
 
 <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
 
 ## 主要功能
 
-<FeatureCardGrid columns={2}>
-    <FeatureCard title="远程组网" icon="laptop" delay={0}>
-        <p>组件虚拟局域网，管理多台设备；支持子网代理等高级功能。NAS，远程桌面轻松连接。</p>
-    </FeatureCard>
-    <FeatureCard title="游戏联机" icon="gamepad" delay={100}>
-        <p>使用一键联机功能，与好友快速联机，支持MC，CS:GO2，森林之子等多款游戏。</p>
-    </FeatureCard>
-</FeatureCardGrid>
+<FeatureCards 
+  columns={2}
+  cards={[
+    { title: "远程组网", icon: "laptop", delay: 0, description: "组件虚拟局域网，管理多台设备；支持子网代理等高级功能。NAS，远程桌面轻松连接。" },
+    { title: "游戏联机", icon: "gamepad", delay: 150, description: "使用一键联机功能，与好友快速联机，支持MC，CS:GO2，森林之子等多款游戏。" }
+  ]} 
+/>
 
 ## 为什么选择 QtEasyTier
 
-<FeatureCardGrid columns={3}>
-    <FeatureCard title="使用简单，快速上手" icon="pencil" delay={0}>
-        <p>UI 布局合理，功能提示齐全，帮助您快速上手类 EasyTier 的去中心化组网工具。</p>
-    </FeatureCard>
-    <FeatureCard title="高性能，低占用" icon="rocket" delay={80}>
-        <p>前端使用Qt Framework (C++) 编写，界面简洁高效。搭配EasyTier后端，为您带来高性能的组网体验！</p>
-    </FeatureCard>
-    <FeatureCard title="一键联机，好友互联零门槛" icon="link" delay={160}>
-        <p>QtEasyTier1.1.0 版本新增一键联机功能，无需动手配置，自动生成房间号，与好友轻松联机。</p>
-    </FeatureCard>
-    <FeatureCard title="功能丰富，你的网络由你定义" icon="setting" delay={240}>
-        <p>支持 EasyTier 后端的大部分功能，如子网代理，魔法DNS等，超多配置自由选择。</p>
-    </FeatureCard>
-    <FeatureCard title="开源免费，使用放心" icon="git" delay={320}>
-        <p>QtEasyTier 项目完全开源免费，不收集任何个人信息，使用安全放心。</p>
-    </FeatureCard>
-</FeatureCardGrid>
+<FeatureCards 
+  columns={3}
+  cards={[
+    { title: "使用简单，快速上手", icon: "pencil", delay: 0, description: "UI 布局合理，功能提示齐全，帮助您快速上手类 EasyTier 的去中心化组网工具。" },
+    { title: "高性能，低占用", icon: "rocket", delay: 100, description: "前端使用Qt Framework (C++) 编写，界面简洁高效。搭配EasyTier后端，为您带来高性能的组网体验！" },
+    { title: "一键联机，好友互联零门槛", icon: "link", delay: 200, description: "QtEasyTier1.1.0 版本新增一键联机功能，无需动手配置，自动生成房间号，与好友轻松联机。" },
+    { title: "功能丰富，你的网络由你定义", icon: "setting", delay: 300, description: "支持 EasyTier 后端的大部分功能，如子网代理，魔法DNS等，超多配置自由选择。" },
+    { title: "开源免费，使用放心", icon: "git", delay: 400, description: "QtEasyTier 项目完全开源免费，不收集任何个人信息，使用安全放心。" }
+  ]} 
+/>
 
 ### <span className="text-accent font-bold">相关链接</span>
 
