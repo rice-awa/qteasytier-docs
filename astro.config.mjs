@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
   site: "https://qtet.070219.xyz",
@@ -64,5 +65,6 @@ export default defineConfig({
         },
       ],
     }),
+    tailwind({ applyBaseStyles: false }),
   ],
 });

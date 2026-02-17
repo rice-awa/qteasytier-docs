@@ -29,24 +29,29 @@ hero:
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## 🌟 主要功能
+<div className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
 
+## <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-teal-400 font-extrabold">🌟 主要功能</span>
+
+<div className="my-8">
 <CardGrid>
-    <Card title="💻 远程组网" className="custom-card platform-card">
-        <p>
+    <Card title="💻 远程组网" icon="laptop">
+        <p className="text-gray-600 dark:text-gray-300">
             组件虚拟局域网，管理多台设备；支持子网代理等高级功能。NAS，远程桌面轻松连接。
         </p>
     </Card>
 
-    <Card title="🎮 游戏联机" className="custom-card game-card">
-        <p>
+    <Card title="🎮 游戏联机" icon="puzzle">
+        <p className="text-gray-600 dark:text-gray-300">
             使用一键联机功能，与好友快速联机，支持MC，CS:GO2，森林之子等多款游戏。
         </p>
     </Card>
-</CardGrid>	
+</CardGrid>
+</div>
 
-## 🎯为什么选择QtEasyTier
+## <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-teal-400 font-extrabold">🎯 为什么选择 QtEasyTier</span>
 
+<div className="animate-in zoom-in duration-700 delay-300">
 <CardGrid stagger>
 	<Card title="使用简单，快速上手" icon="pencil">
 		UI 布局合理，功能提示齐全，帮助您快速上手类 EasyTier 的去中心化组网工具。
@@ -65,20 +70,42 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 		QtEasyTier 项目完全开源免费，不收集任何个人信息，使用安全放心。
 	</Card>
 </CardGrid>
+</div>
 
-### 相关链接
+### <span className="text-accent font-bold">相关链接</span>
 
-- [EasyTier：一个简单、安全、去中心化的异地组网方案](https://easytier.cn)
-- [明月清风的博客：作者的个人博客](https://blog.070219.xyz)
+<div className="flex flex-wrap gap-4 my-4">
+    <a href="https://easytier.cn" className="no-underline px-4 py-2 rounded-lg bg-cyan-100 text-cyan-800 hover:bg-cyan-200 transition-colors shadow-sm font-medium border border-cyan-200">
+        🌐 EasyTier 官网
+    </a>
+    <a href="https://blog.070219.xyz" className="no-underline px-4 py-2 rounded-lg bg-teal-100 text-teal-800 hover:bg-teal-200 transition-colors shadow-sm font-medium border border-teal-200">
+        📝 作者博客
+    </a>
+</div>
 
-#### 联系方式
+#### <span className="text-accent font-bold">联系方式</span>
 
-- 项目地址：
-  - Gitee:	[https://gitee.com/viagrahuang/qt-easy-tier](https://gitee.com/viagrahuang/qt-easy-tier)
-  - GitHub:	[https://github.com/myqfeng/qt-easy-tier](https://github.com/myqfeng/qt-easy-tier)
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white/50 dark:bg-slate-800/50 p-6 rounded-xl border border-cyan-100 dark:border-slate-700 shadow-sm backdrop-blur-sm">
+    <div>
+        <p className="font-bold mb-2">项目地址</p>
+        <ul className="list-none pl-0 space-y-2">
+            <li>
+                <a href="https://gitee.com/viagrahuang/qt-easy-tier" className="flex items-center gap-2 hover:text-red-500 transition-colors">
+                   🔴 Gitee (主仓库)
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/myqfeng/qt-easy-tier" className="flex items-center gap-2 hover:text-black dark:hover:text-white transition-colors">
+                   GitHub (同步)
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <p className="font-bold mb-2">联系作者</p>
+        <p>📧 邮箱: <a href="mailto:viagrahuang@outlook.com">viagrahuang@outlook.com</a></p>
+        <p>💬 QQ群: <span className="font-mono bg-gray-100 dark:bg-slate-700 px-1 rounded">957189589</span> (EasyTier支持3群)</p>
+    </div>
+</div>
 
-  > 提交Pr请前往Gitee，GitHub仅为同步仓库
-
-- 作者邮箱：viagrahuang@outlook.com
-
-- 作者常混迹于EasyTier支持3群：**957189589**
+</div>

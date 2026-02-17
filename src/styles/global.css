@@ -1,97 +1,149 @@
-/* 全局主题色 */
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+
+@tailwind components;
+@tailwind utilities;
+
+/* 全局主题色 - Cyan #0891B2 */
 :root {
-  --sl-hue: 200;
-  --sl-color-accent: rgb(102, 204, 255);
-  --sl-color-accent-low: rgba(102, 204, 255, 0.2);
-  --sl-color-accent-high: rgb(40, 160, 210);
+  --sl-font: 'Inter', sans-serif;
+  --sl-hue: 189;
+  --sl-saturation: 94%;
+  --sl-lightness: 36%;
+  
+  /* Glassmorphism vars */
+  --glass-bg-light: rgba(255, 255, 255, 0.65);
+  --glass-bg-dark: rgba(15, 23, 42, 0.65);
+  --glass-border-light: rgba(255, 255, 255, 0.5);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+  --glass-blur: blur(12px);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode overrides */
+[data-theme='dark'] {
+  --sl-lightness: 60%; 
+}
+
+/* 全局背景图 */
+body {
+  background-image: url('/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* 背景蒙版 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4); /* Less opaque to show bg */
+  pointer-events: none;
+  z-index: -1;
+}
+
+[data-theme="dark"] body::before {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Glassmorphism - Sidebar */
+.sidebar-pane, #starlight__sidebar, .right-sidebar {
+    background-color: var(--glass-bg-light) !important;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-right: 1px solid var(--glass-border-light);
+}
+
+[data-theme="dark"] .sidebar-pane, 
+[data-theme="dark"] #starlight__sidebar, 
+[data-theme="dark"] .right-sidebar {
+    background-color: var(--glass-bg-dark) !important;
+    border-right: 1px solid var(--glass-border-dark);
+}
+
+/* Glassmorphism - Header */
+header {
+    background-color: var(--glass-bg-light) !important;
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--glass-border-light);
+    box-shadow: var(--glass-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+[data-theme="dark"] header {
+    background-color: var(--glass-bg-dark) !important;
+    border-bottom: 1px solid var(--glass-border-dark);
+}
+
+/* Main Content Area - Transparent to show bg through but readable */
+.main-frame {
+   background-color: transparent !important; 
+}
+
+/* Content Container - Card Effect */
+main {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 1rem;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    border: 1px solid var(--glass-border-light);
+    
+    /* Animation */
+    animation: fade-in 0.8s ease-out, slide-up 0.8s ease-out;
+}
+
+[data-theme="dark"] main {
+    background-color: rgba(15, 23, 42, 0.85);
+    border: 1px solid var(--glass-border-dark);
 }
 
 /* 导航栏选中项文字颜色 - 浅色主题 */
 .sidebar-content a[aria-current="page"],
 .sidebar-content .active {
-  color: #1a1a1a !important;
+  color: var(--sl-color-accent) !important;
+  font-weight: 700;
+  background-color: rgba(8, 145, 178, 0.1);
+  border-radius: 8px;
 }
 
 /* 导航栏选中项文字颜色 - 深色主题 */
 [data-theme="dark"] .sidebar-content a[aria-current="page"],
 [data-theme="dark"] .sidebar-content .active {
-  color: #ffffff !important;
-}
-
-/* 全局背景图 */
-body {
-  background-image: url('/background.jpg') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-}
-
-/* 背景蒙版 */
-body::before {
-  content: '' !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  background-color: rgba(255, 255, 255, 0.6) !important;
-  pointer-events: none !important;
-  z-index: -1 !important;
-}
-
-[data-theme="dark"] body::before {
-  background-color: rgba(0, 0, 0, 0.6) !important;
-}
-
-/* 内容区域半透明背景 */
-.main {
-  background-color: rgba(255, 255, 255, 0.88) !important;
-}
-
-[data-theme="dark"] .main {
-  background-color: rgba(15, 23, 42, 0.88) !important;
-}
-
-/* 左侧导航栏半透明 */
-#starlight__sidebar {
-  background-color: rgba(255, 255, 255, 0.8) !important;
-}
-
-[data-theme="dark"] #starlight__sidebar {
-  background-color: rgba(15, 23, 42, 0.8) !important;
-}
-
-/* 右侧目录栏半透明 */
-.right-sidebar {
-  background-color: rgba(255, 255, 255, 0.8) !important;
-  max-width: 18rem !important;
-  min-width: 18rem !important;
-  right: 0 !important;
-}
-
-[data-theme="dark"] .right-sidebar {
-  background-color: rgba(15, 23, 42, 0.8) !important;
-}
-
-
-/* 顶栏半透明 */
-header {
-  background-color: rgba(255, 255, 255, 0.8) !important;
-}
-
-[data-theme="dark"] header {
-  background-color: rgba(15, 23, 42, 0.8) !important;
+  color: #22D3EE !important;
+  background-color: rgba(34, 211, 238, 0.1);
 }
 
 /* Hero 图片放大 - 响应式 */
 @media (min-width: 600px) {
   .hero img {
     width: 500px !important;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+    transition: transform 0.3s ease;
+  }
+  .hero img:hover {
+      transform: scale(1.02);
   }
 }
 
 /* 文档内容区域图片圆角 */
 .sl-flex img {
-  border-radius: 10px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.sl-flex img:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
 }
