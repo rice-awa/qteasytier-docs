@@ -21,77 +21,69 @@ hero:
     - text: 快速开始
       link: /docs-home
       icon: right-arrow
+      variant: primary
     - text: 前往软件仓库
       link: https://gitee.com/viagrahuang/qt-easy-tier
       icon: seti:git
       variant: minimal
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import FeatureCard from '../../components/FeatureCard.astro';
+import FeatureCardGrid from '../../components/FeatureCardGrid.astro';
 
 <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
 
-## <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-teal-400 font-extrabold">🌟 主要功能</span>
+## 主要功能
 
-<div className="my-8">
-<CardGrid>
-    <Card title="💻 远程组网" icon="laptop">
-        <p className="text-gray-600 dark:text-gray-300">
-            组件虚拟局域网，管理多台设备；支持子网代理等高级功能。NAS，远程桌面轻松连接。
-        </p>
-    </Card>
+<FeatureCardGrid columns={2}>
+    <FeatureCard title="远程组网" icon="laptop" delay={0}>
+        <p>组件虚拟局域网，管理多台设备；支持子网代理等高级功能。NAS，远程桌面轻松连接。</p>
+    </FeatureCard>
+    <FeatureCard title="游戏联机" icon="gamepad" delay={100}>
+        <p>使用一键联机功能，与好友快速联机，支持MC，CS:GO2，森林之子等多款游戏。</p>
+    </FeatureCard>
+</FeatureCardGrid>
 
-    <Card title="🎮 游戏联机" icon="puzzle">
-        <p className="text-gray-600 dark:text-gray-300">
-            使用一键联机功能，与好友快速联机，支持MC，CS:GO2，森林之子等多款游戏。
-        </p>
-    </Card>
-</CardGrid>
-</div>
+## 为什么选择 QtEasyTier
 
-## <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-teal-400 font-extrabold">🎯 为什么选择 QtEasyTier</span>
-
-<div className="animate-in zoom-in duration-700 delay-300">
-<CardGrid stagger>
-	<Card title="使用简单，快速上手" icon="pencil">
-		UI 布局合理，功能提示齐全，帮助您快速上手类 EasyTier 的去中心化组网工具。
-	</Card>
-	<Card title="高性能，低占用" icon="rocket">
-		前端使用Qt Framework (C++) 编写，界面简洁高效。
-		搭配EasyTier后端，为您带来高性能的组网体验！
-	</Card>
-	<Card title="一键联机，好友互联零门槛" icon="seti:todo">
-		QtEasyTier1.1.0 版本新增一键联机功能，无需动手配置，自动生成房间号，与好友轻松联机。
-	</Card>
-	<Card title="功能丰富，你的网络由你定义" icon="setting">
-		支持 EasyTier 后端的大部分功能，如子网代理，魔法DNS等，超多配置自由选择。
-	</Card>
-	<Card title="开源免费，使用放心" icon="seti:git">
-		QtEasyTier 项目完全开源免费，不收集任何个人信息，使用安全放心。
-	</Card>
-</CardGrid>
-</div>
+<FeatureCardGrid columns={3}>
+    <FeatureCard title="使用简单，快速上手" icon="pencil" delay={0}>
+        <p>UI 布局合理，功能提示齐全，帮助您快速上手类 EasyTier 的去中心化组网工具。</p>
+    </FeatureCard>
+    <FeatureCard title="高性能，低占用" icon="rocket" delay={80}>
+        <p>前端使用Qt Framework (C++) 编写，界面简洁高效。搭配EasyTier后端，为您带来高性能的组网体验！</p>
+    </FeatureCard>
+    <FeatureCard title="一键联机，好友互联零门槛" icon="link" delay={160}>
+        <p>QtEasyTier1.1.0 版本新增一键联机功能，无需动手配置，自动生成房间号，与好友轻松联机。</p>
+    </FeatureCard>
+    <FeatureCard title="功能丰富，你的网络由你定义" icon="setting" delay={240}>
+        <p>支持 EasyTier 后端的大部分功能，如子网代理，魔法DNS等，超多配置自由选择。</p>
+    </FeatureCard>
+    <FeatureCard title="开源免费，使用放心" icon="git" delay={320}>
+        <p>QtEasyTier 项目完全开源免费，不收集任何个人信息，使用安全放心。</p>
+    </FeatureCard>
+</FeatureCardGrid>
 
 ### <span className="text-accent font-bold">相关链接</span>
 
 <div className="flex flex-wrap gap-4 my-4">
     <a href="https://easytier.cn" className="no-underline px-4 py-2 rounded-lg bg-cyan-100 text-cyan-800 hover:bg-cyan-200 transition-colors shadow-sm font-medium border border-cyan-200">
-        🌐 EasyTier 官网
+        EasyTier 官网
     </a>
     <a href="https://blog.070219.xyz" className="no-underline px-4 py-2 rounded-lg bg-teal-100 text-teal-800 hover:bg-teal-200 transition-colors shadow-sm font-medium border border-teal-200">
-        📝 作者博客
+        作者博客
     </a>
 </div>
 
 #### <span className="text-accent font-bold">联系方式</span>
 
-<div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white/50 dark:bg-slate-800/50 p-6 rounded-xl border border-cyan-100 dark:border-slate-700 shadow-sm backdrop-blur-sm">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white/80 dark:bg-slate-800/80 p-6 rounded-xl border border-cyan-100 dark:border-slate-700 shadow-sm">
     <div>
         <p className="font-bold mb-2">项目地址</p>
         <ul className="list-none pl-0 space-y-2">
             <li>
                 <a href="https://gitee.com/viagrahuang/qt-easy-tier" className="flex items-center gap-2 hover:text-red-500 transition-colors">
-                   🔴 Gitee (主仓库)
+                   Gitee (主仓库)
                 </a>
             </li>
             <li>
@@ -103,8 +95,8 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
     </div>
     <div>
         <p className="font-bold mb-2">联系作者</p>
-        <p>📧 邮箱: <a href="mailto:viagrahuang@outlook.com">viagrahuang@outlook.com</a></p>
-        <p>💬 QQ群: <span className="font-mono bg-gray-100 dark:bg-slate-700 px-1 rounded">957189589</span> (EasyTier支持3群)</p>
+        <p>邮箱: <a href="mailto:viagrahuang@outlook.com">viagrahuang@outlook.com</a></p>
+        <p>QQ群: <span className="font-mono bg-gray-100 dark:bg-slate-700 px-1 rounded">957189589</span> (EasyTier支持3群)</p>
     </div>
 </div>
 
