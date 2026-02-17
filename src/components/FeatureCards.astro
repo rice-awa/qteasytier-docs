@@ -2,16 +2,21 @@
 interface CardData {
   title: string;
   icon: 'laptop' | 'gamepad' | 'pencil' | 'rocket' | 'link' | 'setting' | 'git';
-  delay: number;
+  delay?: number;
   description: string;
 }
 
 interface Props {
   cards: CardData[];
   columns?: 2 | 3;
+  featuredIndex?: number;
+  layout?: 'grid' | 'zigzag';
 }
 
-const { cards, columns = 2 } = Astro.props;
+const { cards, columns = 2, featuredIndex = -1, layout = 'grid' } = Astro.props;
+const hasFeatured = featuredIndex >= 0 && featuredIndex < cards.length;
+const minCardWidth = columns === 2 ? '300px' : '250px';
+const featuredEnabled = layout === 'grid' && hasFeatured;
 
 const iconColors: Record<string, { from: string; to: string }> = {
   laptop: { from: '#0891B2', to: '#22D3EE' },
@@ -34,13 +39,20 @@ const iconPaths: Record<string, string> = {
 };
 ---
 
-<div class="feature-card-grid" data-columns={columns}>
+<div
+  class="feature-card-grid"
+  data-columns={columns}
+  data-layout={layout}
+  data-featured-enabled={featuredEnabled ? 'true' : 'false'}
+  style={`--card-min: ${minCardWidth};`}
+>
   {cards.map((card, index) => {
     const colors = iconColors[card.icon] || iconColors.laptop;
     return (
       <div
-        class="feature-card"
-        style={`--delay: ${card.delay}ms; --icon-from: ${colors.from}; --icon-to: ${colors.to};`}
+        class:list={['feature-card', { 'is-featured': featuredEnabled && index === featuredIndex }]}
+        data-card-index={index}
+        style={`--delay: ${card.delay ?? 0}ms; --icon-from: ${colors.from}; --icon-to: ${colors.to};`}
       >
         <div class="icon-wrapper">
           <svg
@@ -62,50 +74,142 @@ const iconPaths: Record<string, string> = {
   })}
 </div>
 
+<script is:inline>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const grids = Array.from(document.querySelectorAll('.feature-card-grid'));
+
+  for (const grid of grids) {
+    const cards = Array.from(grid.querySelectorAll('.feature-card'));
+    if (cards.length === 0) continue;
+
+    if (reduceMotion || typeof IntersectionObserver === 'undefined') {
+      for (const card of cards) {
+        card.classList.add('is-visible');
+      }
+      continue;
+    }
+
+    grid.setAttribute('data-animate', 'ready');
+    for (const [index, card] of cards.entries()) {
+      card.style.setProperty('--stagger', `${index * 70}ms`);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -8% 0px',
+      }
+    );
+
+    for (const card of cards) {
+      observer.observe(card);
+    }
+  }
+</script>
+
 <style>
   .feature-card-grid {
     display: grid;
-    gap: 1.5rem;
+    gap: 1.25rem;
     margin: 1.5rem 0;
-    grid-template-columns: repeat(1, 1fr);
+    align-items: stretch;
   }
 
-  @media (min-width: 640px) {
-    .feature-card-grid {
-      grid-template-columns: repeat(2, 1fr);
+  .feature-card-grid[data-layout='grid'] {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--card-min, 260px)), 1fr));
+  }
+
+  .feature-card-grid[data-layout='zigzag'] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    .feature-card-grid[data-layout='zigzag'] {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 1.5rem;
+      row-gap: 1.25rem;
+    }
+
+    .feature-card-grid[data-layout='zigzag'] .feature-card:nth-child(even) {
+      --zigzag-offset: 56px;
     }
   }
 
   @media (min-width: 1024px) {
-    .feature-card-grid[data-columns="3"] {
-      grid-template-columns: repeat(3, 1fr);
+    .feature-card-grid[data-featured-enabled='true'] .feature-card.is-featured {
+      grid-column: span 2;
+      min-height: 240px;
+      padding: 1.75rem;
     }
   }
 
   .feature-card {
+    position: relative;
+    overflow: hidden;
     background: rgba(255, 255, 255, 0.85);
     border-radius: 16px;
     padding: 1.5rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     border: 1px solid rgba(226, 232, 240, 0.6);
     cursor: default;
+    min-height: 220px;
+    --zigzag-offset: 0px;
+    transform: translateY(var(--zigzag-offset));
+    transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    will-change: transform, opacity;
+  }
+
+  .feature-card-grid[data-animate='ready'] .feature-card {
     opacity: 0;
-    transform: translateY(30px);
-    animation: cardEnter 0.6s ease-out forwards;
-    animation-delay: var(--delay);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translateY(calc(var(--zigzag-offset) + 16px));
+  }
+
+  .feature-card-grid[data-animate='ready'] .feature-card.is-visible {
+    opacity: 1;
+    transform: translateY(var(--zigzag-offset));
+    transition:
+      opacity 480ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 480ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 220ms ease,
+      border-color 220ms ease;
+    transition-delay:
+      calc(var(--delay, 0ms) + var(--stagger, 0ms)),
+      calc(var(--delay, 0ms) + var(--stagger, 0ms)),
+      0ms,
+      0ms;
+  }
+
+  .feature-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.35) 48%, transparent 76%);
+    transform: translateX(-120%);
+    opacity: 0;
+    transition: transform 240ms ease, opacity 240ms ease;
+    pointer-events: none;
   }
 
   .feature-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    transform: translateY(calc(var(--zigzag-offset) - 4px));
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.13);
+    border-color: rgba(8, 145, 178, 0.35);
   }
 
-  @keyframes cardEnter {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .feature-card:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .feature-card:active {
+    transform: translateY(calc(var(--zigzag-offset) - 2px));
   }
 
   :global([data-theme="dark"]) .feature-card {
@@ -115,7 +219,12 @@ const iconPaths: Record<string, string> = {
   }
 
   :global([data-theme="dark"]) .feature-card:hover {
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.32);
+    border-color: rgba(34, 211, 238, 0.35);
+  }
+
+  :global([data-theme="dark"]) .feature-card::after {
+    background: linear-gradient(115deg, transparent 20%, rgba(148, 163, 184, 0.15) 48%, transparent 76%);
   }
 
   .icon-wrapper {
@@ -127,22 +236,21 @@ const iconPaths: Record<string, string> = {
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
-    transition: transform 0.3s ease;
-    animation: iconEnter 0.5s ease-out forwards;
-    animation-delay: calc(var(--delay) + 0.2s);
+    transition: transform 240ms ease, opacity 300ms ease;
+    transform: scale(0.9);
     opacity: 0;
-    transform: scale(0) rotate(-180deg);
   }
 
-  @keyframes iconEnter {
-    to {
-      opacity: 1;
-      transform: scale(1) rotate(0deg);
-    }
+  .feature-card.is-visible .icon-wrapper,
+  .feature-card-grid:not([data-animate='ready']) .icon-wrapper {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: calc(var(--delay, 0ms) + var(--stagger, 0ms) + 80ms);
   }
 
   .feature-card:hover .icon-wrapper {
-    transform: scale(1.1) rotate(5deg);
+    transition-delay: 0ms;
+    transform: scale(1.06);
   }
 
   .title {
@@ -160,10 +268,45 @@ const iconPaths: Record<string, string> = {
     margin: 0;
     color: #64748b;
     line-height: 1.6;
-    font-size: 0.9rem;
+    font-size: 0.92rem;
   }
 
   :global([data-theme="dark"]) .description {
     color: #94a3b8;
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    .feature-card:hover {
+      transform: translateY(var(--zigzag-offset));
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      border-color: rgba(226, 232, 240, 0.6);
+    }
+
+    :global([data-theme='dark']) .feature-card:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border-color: rgba(51, 65, 85, 0.6);
+    }
+
+    .feature-card:hover::after {
+      opacity: 0;
+      transform: translateX(-120%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .feature-card,
+    .icon-wrapper,
+    .feature-card::after {
+      transition: none !important;
+      animation: none !important;
+    }
+
+    .feature-card {
+      transform: translateY(var(--zigzag-offset)) !important;
+    }
+
+    .feature-card-grid[data-animate='ready'] .feature-card {
+      opacity: 1;
+    }
   }
 </style>

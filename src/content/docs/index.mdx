@@ -30,14 +30,12 @@ hero:
 
 import FeatureCards from '../../components/FeatureCards.astro';
 
-<div className="animate-in fade-in slide-in-from-bottom-8 duration-1000">
-
 ## 主要功能
 
 <FeatureCards 
   columns={2}
   cards={[
-    { title: "远程组网", icon: "laptop", delay: 0, description: "组件虚拟局域网，管理多台设备；支持子网代理等高级功能。NAS，远程桌面轻松连接。" },
+    { title: "远程组网", icon: "laptop", delay: 0, description: "构建虚拟局域网，管理多台设备；支持子网代理等高级功能。NAS、远程桌面轻松连接。" },
     { title: "游戏联机", icon: "gamepad", delay: 150, description: "使用一键联机功能，与好友快速联机，支持MC，CS:GO2，森林之子等多款游戏。" }
   ]} 
 />
@@ -46,6 +44,7 @@ import FeatureCards from '../../components/FeatureCards.astro';
 
 <FeatureCards 
   columns={3}
+  layout="zigzag"
   cards={[
     { title: "使用简单，快速上手", icon: "pencil", delay: 0, description: "UI 布局合理，功能提示齐全，帮助您快速上手类 EasyTier 的去中心化组网工具。" },
     { title: "高性能，低占用", icon: "rocket", delay: 100, description: "前端使用Qt Framework (C++) 编写，界面简洁高效。搭配EasyTier后端，为您带来高性能的组网体验！" },
@@ -89,6 +88,4 @@ import FeatureCards from '../../components/FeatureCards.astro';
         <p>邮箱: <a href="mailto:viagrahuang@outlook.com">viagrahuang@outlook.com</a></p>
         <p>QQ群: <span className="font-mono bg-gray-100 dark:bg-slate-700 px-1 rounded">957189589</span> (EasyTier支持3群)</p>
     </div>
-</div>
-
 </div>
