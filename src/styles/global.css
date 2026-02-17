@@ -97,19 +97,24 @@ header {
    background-color: transparent !important; 
 }
 
-/* Content Container */
-main {
-    background-color: rgba(255, 255, 255, 0.75);
-    border-radius: 16px;
-    padding: 2rem;
-    margin: 1rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(226, 232, 240, 1);
+/* Content Container - 落地页全透明 */
+.page-splash main {
+    background-color: transparent !important;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border: none;
 }
 
-[data-theme="dark"] main {
-    background-color: rgba(15, 23, 42, 0.75);
-    border: 1px solid rgba(51, 65, 85, 1);
+/* Content Container - 文档页面全透明 */
+.page-docs main {
+    background-color: transparent !important;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border: none;
 }
 
 /* 导航栏选中项文字颜色 - 浅色主题 */
